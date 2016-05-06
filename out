@@ -13,8 +13,8 @@ WEBHOOK_URL=$(echo $PAYLOAD | jq --raw-output '.source.url')
 TEXT_CONTENT=$(echo $PAYLOAD | jq --raw-output '.params.text')
 
 TEXT_FILE=$(echo $PAYLOAD | jq --raw-output '.params.text_file')
-if [[ -n "$TEXT_FILE" && -f "$TEXT_FILE" ]]; then
-  TEXT_FILE_CONTENT=$(cat "$TEXT_FILE" | jq --raw-input --slurp '.')
+if [[ -n "$1/$TEXT_FILE" && -f "$1/$TEXT_FILE" ]]; then
+  TEXT_FILE_CONTENT=$(cat "$1/$TEXT_FILE" | jq --raw-input --slurp '.')
   TEXT_FILE_CONTENT=$(eval echo $TEXT_FILE_CONTENT)
 fi
 
