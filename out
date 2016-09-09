@@ -5,7 +5,7 @@ set -e
 exec 3>&1
 exec 1>&2
 
-PAYLOAD=$(</dev/stdin)
+PAYLOAD=$(cat)
 ALWAYS_NOTIFY=$(echo $PAYLOAD | jq --raw-output '.params.always_notify')
 DEBUG=$(echo $PAYLOAD | jq --raw-output '.params.debug')
 WEBHOOK_URL=$(echo $PAYLOAD | jq --raw-output '.source.url')
