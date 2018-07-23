@@ -1,10 +1,9 @@
 FROM alpine
 
-RUN apk add --update \
+RUN apk add --no-cache --update \
     bash \
     curl \
-    jq \
- && rm -rf /var/cache/apk/*
+    jq
 
 COPY check /opt/resource/check
 COPY in    /opt/resource/in
